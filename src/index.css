@@ -1,0 +1,8 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Esto cambia la fuente predeterminada de todo el sitio a Jost */
+  --font-sans: "Jost", sans-serif; 
+}
