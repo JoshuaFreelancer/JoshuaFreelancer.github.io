@@ -1,13 +1,42 @@
+// IMPORTACIÓN DE IMÁGENES
+import htmlImg from '../assets/html.png';
+import cssImg from '../assets/css.webp';
+import jsImg from '../assets/javascript.png';
+import reactImg from '../assets/react.png';
+import nodeImg from '../assets/nodejs.png';
+import mongoImg from '../assets/mongodb.webp';
+import tailwindImg from '../assets/tailwind.png';
+import gitImg from '../assets/git.png';
+import firebaseImg from '../assets/firebase.png';
+import figmaImg from '../assets/figma.png';
+
 export default function Projects() {
   
-  // Datos de tus proyectos (Puedes editar esto luego)
+  // Array de iconos cargados
+  // AÑADIDO: propiedad 'customPadding' para ajustar tamaños individuales
+  const techIcons = [
+    { name: "HTML", src: htmlImg },
+    // CSS más grande: Usamos p-2 (menos relleno)
+    { name: "CSS", src: cssImg, customPadding: "p-2" }, 
+    // JS más pequeño: Usamos p-4 (más relleno)
+    { name: "JavaScript", src: jsImg, customPadding: "p-4" }, 
+    { name: "React", src: reactImg },
+    { name: "Node.js", src: nodeImg },
+    { name: "MongoDB", src: mongoImg },
+    { name: "Tailwind", src: tailwindImg },
+    { name: "Git", src: gitImg },
+    { name: "Firebase", src: firebaseImg },
+    { name: "Figma", src: figmaImg },
+  ];
+
+  // Datos de tus proyectos
   const projects = [
     {
       id: 1,
       title: "ApiRestFul E-commerce",
       desc: "API completa para gestión de productos, usuarios y pedidos. Incluye autenticación JWT y pasarela de pagos.",
       tags: ["Node.js", "Express", "MongoDB"],
-      imageColor: "bg-slate-700" // Placeholder gris para la imagen
+      imageColor: "bg-slate-700" 
     },
     {
       id: 2,
@@ -52,13 +81,21 @@ export default function Projects() {
         
         {/* 1. GRID DE ICONOS (Izquierda) */}
         <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800">
-          <div className="grid grid-cols-5 gap-6">
-             {/* Generamos 10 círculos con iconos SVG genéricos de código */}
-             {[...Array(10)].map((_, i) => (
-                <div key={i} className="aspect-square bg-white rounded-full flex items-center justify-center text-slate-900 hover:scale-110 transition-transform shadow-lg shadow-white/10">
-                  <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-                  </svg>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-6">
+             {/* Mapeamos las imágenes PNG importadas */}
+             {techIcons.map((tech, i) => (
+                <div 
+                    key={i} 
+                    // MODIFICADO: Usamos tech.customPadding si existe, si no, el default 'p-3'
+                    className={`aspect-square bg-white rounded-full flex items-center justify-center ${tech.customPadding || 'p-3'} hover:scale-110 transition-transform shadow-lg shadow-white/10`}
+                    title={tech.name}
+                >
+                  <img 
+                    src={tech.src} 
+                    alt={tech.name} 
+                    // La imagen siempre trata de llenar el espacio disponible
+                    className="w-full h-full object-contain" 
+                  />
                 </div>
              ))}
           </div>
@@ -119,7 +156,7 @@ export default function Projects() {
                {/* Overlay al hacer hover */}
                <div className="absolute inset-0 bg-slate-950/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <a href="#" className="px-6 py-2 bg-white text-slate-950 font-bold rounded-full hover:scale-105 transition-transform">
-                    Ver Demo
+                    Ver Proyecto
                   </a>
                </div>
             </div>

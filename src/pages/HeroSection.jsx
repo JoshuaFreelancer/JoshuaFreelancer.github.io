@@ -1,51 +1,101 @@
 export default function HeroSection() {
+  {
+    /* Función para el scroll suave */
+  }
+  const handleScroll = (e) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center", // Alinea al inicio de la sección
+      });
+    }
+  };
   return (
-    <section 
+    <section
       id="inicio"
-      className="flex flex-col justify-center items-center text-center p-6 bg-slate-950 relative overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-slate-950"
     >
-        {/* 1. BADGE */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-900/30 border border-green-800/50 text-green-400 text-[12px] font-bold tracking-widest uppercase mb-8">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]"></span>
-            Desarrollador Web Disponible
+      {/* --- FONDO AMBIENTAL (Efectos Premium) --- */}
+
+      {/* 1. Grid Pattern (Cuadrícula sutil tipo tecnológica) */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+      {/* 2. Glow Verde Central (Luz ambiental detrás del texto) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-125500px] bg-green-500/20 rounded-full blur-[120px] -z-10"></div>
+
+      {/* --- CONTENIDO --- */}
+      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+        {/* 1. BADGE (Glassmorphism + Animación) */}
+        <div className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-green-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-8 hover:bg-white/10 transition-colors cursor-default">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          Desarrollador Web Disponible
         </div>
 
-        {/* 2. NOMBRE (Corregido: Sin superposición, tamaño intermedio) */}
-        <div className="flex flex-col mb-6">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter leading-tight">
-                JESÚS
-            </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-green-500 tracking-tighter leading-tight -mt-2 md:-mt-4">
-                GARCÍA
-            </h1>
+        {/* 2. TÍTULO PRINCIPAL (Tipografía Masiva + Gradiente) */}
+        <div className="flex flex-col items-center mb-8">
+          <h1 className="text-8xl md:text-9xl font-black text-white tracking-tighter">
+            JESÚS
+          </h1>
+          {/* El apellido tiene un gradiente de texto para darle profundidad */}
+          <h1 className="text-8xl md:text-9xl font-black text-green-500 tracking-tighter">
+            GARCÍA
+          </h1>
         </div>
-        
-        {/* 3. LÍNEA DECORATIVA (Más larga) */}
-        <div className="w-32 md:w-64 h-1.5 bg-green-500 mx-auto rounded-full mb-6 shadow-[0_0_15px_rgba(74,222,128,0.5)]"></div>
 
-        {/* 4. DESCRIPCIÓN (Texto Blanco Puro) */}
-        <p className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed font-light">
-            Transformo ideas en experiencias digitales excepcionales. 
-            Especializado en desarrollo frontend moderno con pasión por 
-            el código limpio y el diseño intuitivo.
+        {/* 3. DESCRIPCIÓN (Color grisáceo para mejor lectura + Ancho controlado) */}
+        <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          Transformo tus ideas en{" "}
+          <span className="text-slate-200 font-semibold">
+            experiencias digitales fluidas
+          </span>
+          . Especializado en el ecosistema Frontend moderno, fusionando código
+          limpio con interfaces intuitivas.
         </p>
 
-        {/* 5. BOTÓN (Solo uno, centrado y con buen padding) */}
-        <div className="flex justify-center">
-            <a 
-              href="#proyectos" 
-              className="group flex items-center bg-white rounded-lg overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-            >
-                {/* Cuadro verde con icono */}
-                <div className="bg-green-600 p-4 flex items-center justify-center text-slate-950 group-hover:bg-green-500 transition-colors">
-                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                {/* Texto del botón (Espaciado mejorado) */}
-                <span className="px-8 py-3 font-extrabold text-slate-950 tracking-widest text-sm uppercase">
-                    VER PROYECTOS
-                </span>
-            </a>
+        {/* 4. BOTONES (CTA Principal + Secundario) */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+          {/* Botón Principal (Ver Proyectos) */}
+          <a
+            href="#proyectos"
+            onClick={handleScroll}
+            className="group relative inline-flex h-12 items-center overflow-hidden rounded-md bg-white text-slate-900 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+          >
+            {/* Contenedor del Ícono (Cuadrado Verde Izquierdo) */}
+            <span className="flex h-full w-12 items-center justify-center bg-green-600 transition-colors duration-300 group-hover:bg-green-500">
+              <svg
+                className="w-4 h-4 text-black fill-current" // Ícono negro y relleno
+                viewBox="0 0 24 24"
+                fill="currentColor" // Usar fill para que se vea sólido como en la imagen
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Triángulo estilo 'Play' */}
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+
+            {/* Texto del Botón */}
+            <span className="px-6 text-sm font-black uppercase tracking-wider">
+              Ver Proyectos
+            </span>
+          </a>
+
+          {/* Botón Secundario (Descargar CV - Estilo Ghost) */}
+          <a
+            href="Currículum Vitae Joshua (Jesus).pdf" 
+            download="CV_Jesus_Garcia.pdf"
+            className="inline-flex h-12 items-center justify-center rounded-md border border-slate-800 bg-slate-900/50 px-8 font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-slate-800 hover:text-white hover:border-slate-700"
+          >
+            Descargar CV
+          </a>
         </div>
+      </div>
     </section>
-  )
+  );
 }

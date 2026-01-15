@@ -4,73 +4,89 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 top-0 start-0 bg-slate-950/95 backdrop-blur-md border-b border-slate-900">
+    <nav className="fixed w-full z-50 top-0 start-0 bg-slate-950/80 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-5 px-6">
-        {/* 1. LOGO JG (Más compacto) */}
-        <a href="#" className="flex items-center">
-          <span className="self-center text-2xl font-bold italic text-white tracking-tighter hover:text-green-500 transition-colors">
-            JG
+        {/* 1. LOGO JG */}
+        <a href="#" className="flex items-center group">
+          <span className="self-center text-2xl font-bold italic text-white tracking-tighter">
+            JG<span className="text-green-500">.</span>{" "}
+            {/* Pequeño acento visual */}
           </span>
         </a>
 
-        {/* Botón Hamburguesa */}
+        {/* Botón Hamburguesa (Estilizado) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center p-2 w-9 h-9 justify-center text-slate-400 rounded-lg md:hidden hover:bg-slate-800"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-slate-400 rounded-lg md:hidden hover:bg-white/5 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-green-500/50"
         >
+          <span className="sr-only">Abrir menú principal</span>
           <svg
-            className="w-5 h-5"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
+            {isOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            )}
           </svg>
         </button>
 
         {/* Contenedor Principal */}
         <div
-          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+          className={`${
+            isOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto transition-all duration-300 ease-in-out`}
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 border border-slate-800 rounded-xl bg-slate-900 md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
-            {/* 2. ENLACES (Tamaño de fuente equilibrado) */}
+          {/* CAMBIO: Fondo del menú móvil más integrado y bordes sutiles */}
+          <ul className="flex flex-col p-4 md:p-0 mt-4 border border-white/10 rounded-2xl bg-slate-900/90 md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none">
+            {/* 2. ENLACES (Menos contraste inicial, más brillo en hover) */}
             {["Inicio", "Sobre mí", "Habilidades", "Proyectos"].map((item) => (
               <li key={item}>
                 <a
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="block py-2 px-3 text-white uppercase text-[13px] font-bold tracking-widest hover:text-green-500 transition-colors md:p-0"
+                  className="relative block py-2 px-3 text-slate-300 uppercase text-[12px] font-bold tracking-[0.15em] hover:text-white transition-colors md:p-0 group"
                 >
                   {item}
+                  {/* Pequeña línea decorativa que aparece en hover (opcional pero elegante) */}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </li>
             ))}
 
-            {/* 3. BOTÓN CONTÁCTAME (Más estilizado) */}
+            {/* 3. BOTÓN CONTÁCTAME (Glow Effect) */}
             <li className="mt-4 md:mt-0">
               <a
                 href="#contacto"
-                className="block text-white bg-green-600 hover:bg-green-500 font-bold rounded-full text-[12px] uppercase px-5 py-2 text-center transition-all transform hover:scale-105"
+                className="block text-white bg-green-600 hover:bg-green-500 font-bold rounded-full text-[12px] uppercase px-6 py-2.5 text-center transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(22,163,74,0.3)] hover:shadow-[0_0_25px_rgba(22,163,74,0.6)]"
               >
                 Contáctame
               </a>
             </li>
 
-            {/* 4. ICONOS SOCIALES (Fondo de color de marca + Icono Blanco) */}
-            <li className="flex items-center space-x-3 mt-4 md:mt-0 md:pl-6 md:border-l md:border-slate-800">
-              {/* GitHub (Fondo oscuro de marca) */}
+            {/* 4. ICONOS SOCIALES (Estilo Minimalista -> Color en Hover) */}
+            <li className="flex items-center justify-center md:justify-start space-x-3 mt-6 md:mt-0 md:pl-6 md:border-l md:border-white/10">
+              {/* GitHub */}
               <a
                 href="https://github.com/JoshuaFreelancer"
                 target="_blank"
-                className="flex items-center justify-center w-8 h-8 bg-[#24292e] text-white rounded-lg hover:bg-black hover:scale-110 transition-all shadow-lg shadow-black/20"
+                className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#24292e] hover:text-white transition-all duration-300 hover:-translate-y-1"
                 title="GitHub"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -82,15 +98,15 @@ export default function Navbar() {
                 </svg>
               </a>
 
-              {/* LinkedIn (Azul Oscuro Profesional) */}
+              {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/in/joshuadevpro/"
                 target="_blank"
-                className="flex items-center justify-center w-8 h-8 bg-[#0a66c2] text-white rounded-lg hover:bg-[#004182] hover:scale-110 transition-all shadow-lg shadow-blue-900/20"
+                className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:-translate-y-1"
                 title="LinkedIn"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -98,15 +114,15 @@ export default function Navbar() {
                 </svg>
               </a>
 
-              {/* WhatsApp (Verde Oficial) */}
+              {/* WhatsApp */}
               <a
                 href="https://wa.me/tunúmero"
                 target="_blank"
-                className="flex items-center justify-center w-8 h-8 bg-[#25d366] text-white rounded-lg hover:bg-[#128c7e] hover:scale-110 transition-all shadow-lg shadow-green-900/20"
+                className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#25d366] hover:text-white transition-all duration-300 hover:-translate-y-1"
                 title="WhatsApp"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
