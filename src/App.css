@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* En tu archivo CSS global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Esto crea un "colchón" invisible de 80px 
+   para que el scroll se detenga antes */
+section {
+  scroll-margin-top: 65px;
+}

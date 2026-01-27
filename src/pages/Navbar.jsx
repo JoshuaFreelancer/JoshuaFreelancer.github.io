@@ -3,23 +3,31 @@ import { useState } from "react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Función para normalizar el ID (quitar acentos, espacios por guiones)
+  const getTargetId = (item) => {
+    return item
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-");
+  };
+
   return (
     <nav className="fixed w-full z-50 top-0 start-0 bg-slate-950/80 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-5 px-6">
-        {/* 1. LOGO JG */}
+        {/* 1. LOGO */}
         <a href="#" className="flex items-center group">
           <span className="self-center text-2xl font-bold italic text-white tracking-tighter">
-            JG<span className="text-green-500">.</span>{" "}
-            {/* Pequeño acento visual */}
+            JG<span className="text-green-500">.</span>
           </span>
         </a>
 
-        {/* Botón Hamburguesa (Estilizado) */}
+        {/* Botón Hamburguesa */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-slate-400 rounded-lg md:hidden hover:bg-white/5 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-green-500/50"
         >
-          <span className="sr-only">Abrir menú principal</span>
+          <span className="sr-only">Abrir menú</span>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -44,46 +52,44 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Contenedor Principal */}
+        {/* Contenedor de Enlaces */}
         <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } w-full md:block md:w-auto transition-all duration-300 ease-in-out`}
+          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto transition-all duration-300`}
         >
-          {/* CAMBIO: Fondo del menú móvil más integrado y bordes sutiles */}
           <ul className="flex flex-col p-4 md:p-0 mt-4 border border-white/10 rounded-2xl bg-slate-900/90 md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none">
-            {/* 2. ENLACES (Menos contraste inicial, más brillo en hover) */}
-            {["Inicio", "Sobre mí", "Habilidades", "Proyectos"].map((item) => (
+            {/* 2. ENLACES (Actualizado: "Servicios" en lugar de "Sobre mí") */}
+            {["Inicio", "Servicios", "Proyectos"].map((item) => (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  href={`#${getTargetId(item)}`}
+                  onClick={() => setIsOpen(false)}
                   className="relative block py-2 px-3 text-slate-300 uppercase text-[12px] font-bold tracking-[0.15em] hover:text-white transition-colors md:p-0 group"
                 >
                   {item}
-                  {/* Pequeña línea decorativa que aparece en hover (opcional pero elegante) */}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </li>
             ))}
 
-            {/* 3. BOTÓN CONTÁCTAME (Glow Effect) */}
+            {/* 3. BOTÓN CONTÁCTAME */}
             <li className="mt-4 md:mt-0">
               <a
                 href="#contacto"
+                onClick={() => setIsOpen(false)}
                 className="block text-white bg-green-600 hover:bg-green-500 font-bold rounded-full text-[12px] uppercase px-6 py-2.5 text-center transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(22,163,74,0.3)] hover:shadow-[0_0_25px_rgba(22,163,74,0.6)]"
               >
                 Contáctame
               </a>
             </li>
 
-            {/* 4. ICONOS SOCIALES (Estilo Minimalista -> Color en Hover) */}
+            {/* 4. ICONOS SOCIALES */}
             <li className="flex items-center justify-center md:justify-start space-x-3 mt-6 md:mt-0 md:pl-6 md:border-l md:border-white/10">
               {/* GitHub */}
               <a
                 href="https://github.com/JoshuaFreelancer"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#24292e] hover:text-white transition-all duration-300 hover:-translate-y-1"
-                title="GitHub"
               >
                 <svg
                   className="w-5 h-5"
@@ -102,8 +108,8 @@ export default function Navbar() {
               <a
                 href="https://www.linkedin.com/in/joshuadevpro/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:-translate-y-1"
-                title="LinkedIn"
               >
                 <svg
                   className="w-5 h-5"
@@ -118,8 +124,8 @@ export default function Navbar() {
               <a
                 href="https://wa.me/tunúmero"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-center w-9 h-9 bg-white/7 text-slate-400 rounded-lg hover:bg-[#25d366] hover:text-white transition-all duration-300 hover:-translate-y-1"
-                title="WhatsApp"
               >
                 <svg
                   className="w-5 h-5"
