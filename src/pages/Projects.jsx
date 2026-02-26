@@ -8,7 +8,16 @@ import tailwindImg from "../assets/tailwind.png";
 import gitImg from "../assets/git.png";
 import firebaseImg from "../assets/firebase.png";
 import figmaImg from "../assets/figma.png";
-import { Github, ExternalLink } from "lucide-react";
+// Importamos los nuevos iconos abstractos para los proyectos
+import {
+  Github,
+  ExternalLink,
+  Globe,
+  Gamepad2,
+  HeartPulse,
+  Building,
+  ShoppingBasket,
+} from "lucide-react";
 
 export default function Projects() {
   const techIcons = [
@@ -24,33 +33,6 @@ export default function Projects() {
     { name: "Figma", src: figmaImg },
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: "Frutería Deluxe System v2.0",
-      desc: "Sistema de gestión moderno con diseño Glassmorphism. Incluye autenticación, manejo de inventario dinámico, carrito de compras y animaciones fluidas.",
-      tags: ["React", "Tailwind", "Vite", "UX/UI"],
-      link: "https://github.com/JoshuaFreelancer/fruteria-deluxe/tree/main",
-      imageColor: "bg-emerald-900",
-    },
-    {
-      id: 2,
-      title: "Bienestar Express SPA",
-      desc: "Single Page Application (SPA) enfocada en servicios de salud. Cuenta con enrutamiento optimizado, diseño responsivo y estructura modular de componentes.",
-      tags: ["React", "React Router", "Frontend"],
-      link: "https://github.com/JoshuaFreelancer/SPA-BIENESTAR-EXPRESS",
-      imageColor: "bg-cyan-900",
-    },
-    {
-      id: 3,
-      title: "Gamer Forever Reviews",
-      desc: "Plataforma interactiva para reseñas de videojuegos. Catálogo visual oscuro, sistema de valoración y filtros de contenido para gamers.",
-      tags: ["JavaScript", "CSS3", "Design"],
-      link: "https://github.com/JoshuaFreelancer/Gamer-Forever-Game-Reviews/tree/main",
-      imageColor: "bg-violet-900",
-    },
-  ];
-
   const skillsList = [
     { category: "Front-End", tools: ["HTML", "CSS", "JAVASCRIPT", "REACT"] },
     { category: "Backend", tools: ["NODE.JS", "EXPRESS"] },
@@ -59,12 +41,58 @@ export default function Projects() {
     { category: "Otros", tools: ["RESTFUL APIS", "TAILWIND CSS", "SCRUM"] },
   ];
 
+  const projects = [
+    {
+      id: 1,
+      title: "Gamer Forever",
+      desc: "Catálogo interactivo para descubrir videojuegos mediante la integración de la API de RAWG. Ofrece información actualizada de miles de títulos con una experiencia de exploración fluida.",
+      tags: ["React", "Node.js", "UI/UX", "API REST"],
+      repoLink: "https://github.com/JoshuaFreelancer/Gamer-Forever",
+      liveLink: "https://gamer-forever-web.web.app",
+      imageColor: "bg-violet-900/30",
+      icon: Gamepad2, // Asignamos el componente del icono
+    },
+    {
+      id: 2,
+      title: "Bienestar Express",
+      desc: "Plataforma integral para la administración eficiente de inventarios farmacéuticos. Construida bajo el stack MERN para garantizar una gestión de datos rápida, moderna y segura.",
+      tags: ["React", "MongoDB", "Express", "JWT"],
+      repoLink: "https://github.com/JoshuaFreelancer/SPA-BIENESTAR-EXPRESS",
+      liveLink: "https://bienestar-express.web.app",
+      imageColor: "bg-cyan-900/30",
+      icon: HeartPulse,
+    },
+    {
+      id: 3,
+      title: "Altura Andina",
+      desc: "Aplicación Full-Stack para gestión y reserva hotelera. Integra pagos en línea, notificaciones y datos meteorológicos en tiempo real de un hotel ficticio ubicado en los Andes venezolanos.",
+      tags: ["Stack MERN", "API Integrations", "SPA", "Full-Stack"],
+      repoLink: "https://github.com/JoshuaFreelancer/Altura-Andina",
+      liveLink: "https://altura-andina.web.app",
+      imageColor: "bg-emerald-900/30",
+      icon: Building,
+    },
+    {
+      id: 4,
+      title: "Frutería Deluxe",
+      desc: "Sistema de administración de inventario de una frutería. Implementa diseño isométrico, glassmorphism y retroalimentación auditiva sobre una sólida arquitectura de componentes.",
+      tags: ["React", "Tailwind CSS", "UX/UI", "Glassmorphism"],
+      repoLink: "https://github.com/JoshuaFreelancer/Fruteria-Deluxe",
+      liveLink: "https://fruteria-deluxe.web.app",
+      imageColor: "bg-orange-900/30",
+      icon: ShoppingBasket,
+    },
+  ];
+
   return (
-    <section id="proyectos" className="p-6 bg-slate-950 text-white py-20">
+    <section
+      id="proyectos"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-950 relative overflow-hidden"
+    >
       {/* TÍTULO DE SECCIÓN */}
-      <div className="text-center mb-16">
-        <p className="text-green-500 font-bold uppercase tracking-widest text-md mb-2">
-          • Portafolio
+      <div className="text-center mb-16 max-w-4xl mx-auto">
+        <p className="text-green-500 font-bold uppercase tracking-widest text-sm mb-4">
+          • Mi Trabajo
         </p>
         <h2 className="text-4xl md:text-5xl font-medium text-slate-300">
           Proyectos &{" "}
@@ -72,21 +100,21 @@ export default function Projects() {
         </h2>
       </div>
 
-      {/* SECCIÓN SUPERIOR: HABILIDADES */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-24 items-center">
+      {/* --- SECCIÓN SUPERIOR: HABILIDADES (El Stack) --- */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-7xl mx-auto mb-24 items-start">
         {/* 1. GRID DE ICONOS */}
-        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 backdrop-blur-sm">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-6">
+        <div className="lg:col-span-5 bg-slate-900/40 p-8 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
+          <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
             {techIcons.map((tech, i) => (
               <div
                 key={i}
-                className={`aspect-square bg-white rounded-full flex items-center justify-center ${tech.customPadding || "p-3"} hover:scale-110 transition-transform shadow-lg shadow-white/5 cursor-pointer group`}
+                className={`aspect-square bg-slate-800 rounded-2xl flex items-center justify-center ${tech.customPadding || "p-3"} hover:scale-110 hover:bg-slate-700 transition-all duration-300`}
                 title={tech.name}
               >
                 <img
                   src={tech.src}
                   alt={tech.name}
-                  className="w-full h-full object-contain filter group-hover:brightness-110"
+                  className="w-full h-full object-contain filter drop-shadow-md group-hover:brightness-125"
                 />
               </div>
             ))}
@@ -94,25 +122,25 @@ export default function Projects() {
         </div>
 
         {/* 2. LISTA DE TEXTO */}
-        <div className="space-y-6 text-left pl-0 lg:pl-8">
+        <div className="lg:col-span-7 space-y-6 text-left pl-0 lg:pl-8 pt-4">
           {skillsList.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row md:items-baseline gap-3 border-b border-slate-800/50 pb-3 last:border-0"
+              className="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-6 border-b border-slate-800/50 pb-4 last:border-0 last:pb-0"
             >
-              <span className="text-white font-bold min-w-36 flex items-center gap-2 text-lg">
-                <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+              <span className="text-white font-bold min-w-36 flex items-center gap-3 text-base">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
                 {item.category}
               </span>
-              <div className="flex flex-wrap gap-2 text-sm md:text-base">
+              <div className="flex flex-wrap gap-x-3 gap-y-2 text-sm">
                 {item.tools.map((tool, idx) => (
                   <span
                     key={idx}
-                    className="text-slate-400 font-medium tracking-wide hover:text-green-400 transition-colors cursor-default"
+                    className="text-slate-400 font-medium tracking-wide hover:text-green-400 transition-colors cursor-default flex items-center"
                   >
                     {tool}
                     {idx !== item.tools.length - 1 && (
-                      <span className="text-slate-700 px-2">|</span>
+                      <span className="text-slate-700 ml-3 select-none">•</span>
                     )}
                   </span>
                 ))}
@@ -122,81 +150,84 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* SECCIÓN INFERIOR: GRID DE PROYECTOS */}
+      {/* --- SECCIÓN INFERIOR: TARJETAS DE PROYECTOS --- */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-600 transition-all hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] flex flex-col md:flex-row h-auto md:h-72"
-          >
-            {/* Contenido Texto (Izquierda) */}
-            <div className="p-8 md:w-3/5 flex flex-col justify-between relative z-10 bg-slate-900/60 backdrop-blur-sm">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-3 font-mono group-hover:text-green-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 text-sm mb-6 leading-relaxed line-clamp-3">
-                  {project.desc}
-                </p>
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-slate-300 bg-slate-800/50 rounded-full border border-slate-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+        {projects.map((project) => {
+          // Extraemos el componente del icono para poder renderizarlo en JSX
+          const ProjectIcon = project.icon;
+
+          return (
+            <div
+              key={project.id}
+              className="group relative bg-slate-900/30 border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-600 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.4)] flex flex-col sm:flex-row min-h-75"
+            >
+              {/* Contenido Texto */}
+              <div className="p-6 sm:p-8 sm:w-3/5 flex flex-col justify-between order-2 sm:order-1 relative z-30 bg-slate-900/80 backdrop-blur-md">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 font-mono group-hover:text-green-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                    {project.desc}
+                  </p>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-green-400 bg-green-400/10 rounded-full border border-green-400/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Botones de Acción */}
+                <div className="flex flex-wrap gap-4 mt-auto">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-slate-950 hover:bg-green-500 hover:text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg"
+                  >
+                    <Globe size={16} /> Ver Live
+                  </a>
+                  <a
+                    href={project.repoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-300"
+                  >
+                    <Github size={16} /> Repositorio
+                  </a>
                 </div>
               </div>
 
-              {/* Botón Ver Código con Icono ExternalLink */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-bold text-sm mt-auto w-fit"
+              {/* Contenedor de Icono (Reemplaza a la imagen) */}
+              <div
+                className={`sm:w-2/5 h-48 sm:h-auto ${project.imageColor} order-1 sm:order-2 relative overflow-hidden border-b sm:border-b-0 sm:border-l border-slate-800/50`}
               >
-                Ver Repositorio <ExternalLink size={18} />
-              </a>
-            </div>
+                {/* Icono temático del proyecto gigante como marca de agua */}
+                <div className="absolute inset-0 flex items-center justify-center text-white/15 group-hover:scale-110 group-hover:text-white/25 transition-all duration-700 z-0">
+                  <ProjectIcon size={120} strokeWidth={0.75} />
+                </div>
 
-            {/* Placeholder Imagen (Derecha) */}
-            <div
-              className={`md:w-2/5 ${project.imageColor} relative overflow-hidden`}
-            >
-              {/* Decoración de fondo abstracta */}
-              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white/20 to-transparent scale-150"></div>
-
-              {/* Icono central Reemplazando el SVG largo por el componente Github */}
-              <div className="absolute inset-0 flex items-center justify-center text-white/20 group-hover:scale-110 transition-transform duration-500">
-                <Github size={80} strokeWidth={1} />
-              </div>
-
-              {/* Overlay Hover */}
-              <div className="absolute inset-0 bg-slate-950/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px]">
+                {/* Overlay Hover (Botón link central, z-20) */}
                 <a
-                  href={project.link}
+                  href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 bg-white text-slate-950 font-bold rounded-full hover:scale-105 transition-transform shadow-xl flex items-center gap-2"
+                  className="absolute inset-0 bg-slate-950/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20"
                 >
-                  <Github size={20} />
-                  Ver en GitHub
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <ExternalLink size={32} className="text-white" />
+                  </div>
                 </a>
               </div>
             </div>
-          </div>
-        ))}
-
-        {/* Card "Próximo Proyecto" */}
-        <div className="border border-dashed border-slate-800 rounded-3xl flex flex-col items-center justify-center h-64 md:h-72 bg-slate-900/20 text-slate-600 hover:border-green-500/30 hover:text-green-500/50 transition-colors cursor-help">
-          <span className="text-4xl mb-2">+</span>
-          <span className="text-sm tracking-widest uppercase font-bold">
-            Próximo Proyecto
-          </span>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
