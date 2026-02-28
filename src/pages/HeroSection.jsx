@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-100 h-100 md:w-150 md:h-150 bg-green-500/10 rounded-full blur-[100px] md:blur-[120px] -z-10 pointer-events-none"></div>
 
       {/* --- CONTENIDO --- */}
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center mt-20 md:mt-0">
+      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
         {/* 1. BADGE (Status) */}
         <div className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-green-400 text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-8 hover:bg-white/10 transition-colors cursor-default">
           <span className="relative flex h-2 w-2">

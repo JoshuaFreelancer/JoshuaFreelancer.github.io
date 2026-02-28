@@ -105,7 +105,7 @@ export default function Contact() {
         {/* COLUMNA IZQUIERDA: FORMULARIO */}
         <div className="space-y-10">
           <div className="space-y-4">
-            <p className="text-green-500 font-bold uppercase tracking-widest text-sm">
+            <p className="text-green-500 font-bold uppercase tracking-widest text-md">
               • ¿Tienes una idea?
             </p>
             <h2 className="text-4xl md:text-6xl text-white font-black tracking-tight leading-tight">
@@ -201,7 +201,7 @@ export default function Contact() {
 
             {/* Botón Flotante CV */}
             <a
-              href="/Currículum_Vitae_Joshua_Jesus.pdf"
+              href="/Currículum Vitae Joshua (Jesus).pdf"
               download="CV_Jesus_Garcia.pdf"
               className="absolute bottom-8 right-8 z-20 flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-2xl shadow-xl hover:bg-green-500 hover:border-green-400 hover:text-slate-950 transition-all duration-300 group/btn hover:-translate-y-2"
             >

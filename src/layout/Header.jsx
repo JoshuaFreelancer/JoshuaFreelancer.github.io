@@ -60,7 +60,7 @@ export default function Header() {
         >
           <ul className="flex flex-col p-5 md:p-0 mt-4 border border-white/10 rounded-2xl bg-slate-900/95 md:flex-row md:items-center md:gap-8 md:mt-0 md:border-0 md:bg-transparent md:backdrop-blur-none shadow-2xl md:shadow-none">
             {/* ENLACES */}
-            {["Inicio", "Servicios", "Proyectos"].map((item) => (
+            {["Inicio", "Servicios", "Habilidades", "Proyectos"].map((item) => (
               <li key={item}>
                 <a
                   href={`#${getTargetId(item)}`}

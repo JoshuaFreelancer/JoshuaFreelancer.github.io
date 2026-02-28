@@ -79,7 +79,7 @@ export default function Footer() {
 
         {/* NAVEGACIÓN */}
         <ul className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-bold tracking-widest text-slate-400 uppercase">
-          {["Inicio", "Servicios", "Proyectos", "Contacto"].map((item) => (
+          {["Inicio", "Servicios", "Habilidades", "Proyectos", "Contacto"].map((item) => (
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
