@@ -59,7 +59,7 @@ export default function Projects() {
     >
       {/* TÍTULO DE SECCIÓN */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
-        <p className="text-green-500 font-bold uppercase tracking-widest text-sm mb-4">
+        <p className="text-green-500 font-bold uppercase tracking-widest text-md mb-4">
           • Portafolio
         </p>
         <h2 className="text-4xl md:text-5xl font-medium text-slate-300">
