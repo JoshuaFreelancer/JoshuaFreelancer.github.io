@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer({ t }) {
   return (
     <footer className="bg-slate-950 pb-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* 1. SECCIÓN SUPERIOR: "YOU CAN FIND ME HERE" */}
@@ -10,10 +10,10 @@ export default function Footer() {
         {/* Texto */}
         <div className="text-center md:text-left z-10">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
-            Encuéntrame aquí:
+            {t.footer.findMe}
           </h3>
           <p className="text-slate-400 text-sm">
-            Siempre dispuesto a nuevas oportunidades.
+            {t.footer.subtitle}
           </p>
         </div>
 
@@ -79,13 +79,13 @@ export default function Footer() {
 
         {/* NAVEGACIÓN */}
         <ul className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-bold tracking-widest text-slate-400 uppercase">
-          {["Inicio", "Servicios", "Habilidades", "Proyectos", "Contacto"].map((item) => (
-            <li key={item}>
+          {t.footer.links.map((item) => (
+            <li key={item.href}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={item.href}
                 className="hover:text-green-500 transition-colors"
               >
-                {item}
+                {item.label}
               </a>
             </li>
           ))}
@@ -97,7 +97,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Jesús García.
           </p>
           <p className="text-slate-700 text-[10px] mt-1">
-            Hecho con React, Vite & Tailwind.
+            {t.footer.builtWith}
           </p>
         </div>
       </div>

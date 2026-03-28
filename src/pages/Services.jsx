@@ -1,9 +1,7 @@
-export default function Services() {
-  const services = [
+export default function Services({ t }) {
+  const icons = [
     {
       id: 1,
-      title: "Desarrollo Frontend Moderno",
-      desc: "Creación de interfaces de usuario interactivas, rápidas y escalables utilizando React, Vite y Tailwind CSS.",
       icon: (
         // Quitamos el group-focus y dejamos solo group-hover y group-active
         <svg
@@ -23,8 +21,6 @@ export default function Services() {
     },
     {
       id: 2,
-      title: "Arquitectura Backend & APIs",
-      desc: "Diseño de servidores y gestión de bases de datos en tiempo real con tecnologías como Node.js y Firebase.",
       icon: (
         <svg
           className="w-8 h-8 text-slate-400 group-hover:text-green-500 group-active:text-green-500 transition-colors"
@@ -43,8 +39,6 @@ export default function Services() {
     },
     {
       id: 3,
-      title: "E-commerce & Landing Pages",
-      desc: "Soluciones enfocadas en la conversión. Desde tiendas virtuales hasta páginas de aterrizaje optimizadas.",
       icon: (
         <svg
           className="w-8 h-8 text-slate-400 group-hover:text-green-500 group-active:text-green-500 transition-colors"
@@ -63,8 +57,6 @@ export default function Services() {
     },
     {
       id: 4,
-      title: "Sistemas de Gestión & Dashboards",
-      desc: "Desarrollo de software interno a medida, paneles de administración e inventarios para automatizar procesos.",
       icon: (
         <svg
           className="w-8 h-8 text-slate-400 group-hover:text-green-500 group-active:text-green-500 transition-colors"
@@ -83,8 +75,6 @@ export default function Services() {
     },
     {
       id: 5,
-      title: "Diseño UX/UI & Mobile First",
-      desc: "Interfaces adaptables a móviles con enfoque en la experiencia de usuario y una estética limpia.",
       icon: (
         <svg
           className="w-8 h-8 text-slate-400 group-hover:text-green-500 group-active:text-green-500 transition-colors"
@@ -103,8 +93,6 @@ export default function Services() {
     },
     {
       id: 6,
-      title: "Optimización & Despliegue",
-      desc: "Mejora de la velocidad de carga, SEO técnico y configuración de hosting para tus aplicaciones.",
       icon: (
         <svg
           className="w-8 h-8 text-slate-400 group-hover:text-green-500 group-active:text-green-500 transition-colors"
@@ -123,17 +111,24 @@ export default function Services() {
     },
   ];
 
+  const services = t.services.cards.map((service, index) => ({
+    ...service,
+    id: icons[index].id,
+    icon: icons[index].icon,
+  }));
+
   return (
-    <section id="servicios" className="p-6 md:p-10 bg-slate-950 relative">
+    <section id="services" className="p-6 md:p-10 bg-slate-950 relative">
       {/* HEADER DE LA SECCIÓN */}
       <div className="text-center mb-12 max-w-4xl mx-auto">
         <p className="text-green-500 font-bold uppercase tracking-widest text-md mb-4">
-          • ¿Qué ofrezco?
+          • {t.services.eyebrow}
         </p>
         <h2 className="text-4xl md:text-5xl text-white font-medium leading-tight">
-          Soluciones de <span className="font-bold text-white">ingeniería</span>{" "}
+          {t.services.titleStart}{" "}
+          <span className="font-bold text-white">{t.services.titleStrong}</span>{" "}
           <span className="text-slate-500">
-            adaptadas a la medida de tus necesidades
+            {t.services.titleEnd}
           </span>
         </h2>
       </div>
@@ -162,15 +157,15 @@ export default function Services() {
       {/* FOOTER DE LA SECCIÓN */}
       <div className="text-center mt-16">
         <p className="text-slate-400 text-lg">
-          Entusiasmado por asumir nuevos proyectos y colaborar,
+          {t.services.footerLine1}
         </p>
         <p className="text-slate-400 text-lg">
-          ¡Hablemos de tus ideas!{" "}
+          {t.services.footerLine2}{" "}
           <a
-            href="#contacto"
+            href="#contact"
             className="text-green-500 font-bold hover:underline"
           >
-            Contáctame.
+            {t.services.contactLink}
           </a>
         </p>
       </div>

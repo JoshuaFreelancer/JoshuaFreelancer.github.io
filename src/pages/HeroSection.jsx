@@ -1,7 +1,16 @@
-export default function HeroSection() {
+export default function HeroSection({ t, language }) {
+  const { hero } = t;
+  const isSpanish = language === "es";
+  const cvHref = isSpanish
+    ? "/CV%20Jesus%20Garcia.pdf"
+    : "/CV%20Jesus%20Garcia%20(English).pdf";
+  const cvDownloadName = isSpanish
+    ? "CV_Jesus_Garcia_ES.pdf"
+    : "CV_Jesus_Garcia_EN.pdf";
+
   return (
     <section
-      id="inicio"
+      id="home"
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-950"
     >
       {/* --- FONDO AMBIENTAL --- */}
@@ -19,41 +28,40 @@ export default function HeroSection() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          Desarrollador Full-Stack Disponible
+          {hero.badge}
         </div>
 
         {/* 2. TÍTULO PRINCIPAL */}
         <div className="flex flex-col items-center mb-6">
           <h1 className="text-7xl sm:text-8xl md:text-9xl font-black text-white tracking-tighter leading-none">
-            JESÚS
+            {hero.nameFirst}
           </h1>
           <h1 className="text-7xl sm:text-8xl md:text-9xl font-black text-green-500 tracking-tighter leading-none">
-            GARCÍA
+            {hero.nameLast}
           </h1>
         </div>
 
         {/* 3. DESCRIPCIÓN */}
         <p className="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
           <span className="text-slate-200 font-semibold">
-            Ingeniero en Computación
+            {hero.introLead}
           </span>{" "}
-          transformando ideas en{" "}
+          {hero.introMiddle}{" "}
           <span className="text-slate-200 font-semibold">
-            experiencias digitales fluidas
+            {hero.introHighlight}
           </span>
-          . Especializado en el ecosistema de desarrollo moderno, fusionando
-          código limpio, bases de datos robustas e interfaces intuitivas.
+          . {hero.introEnd}
         </p>
 
         {/* 4. BOTONES */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
           {/* Botón Principal (NUEVO DISEÑO CON CÍRCULO Y FLECHA) */}
           <a
-            href="#proyectos"
+            href="#projects"
             className="group w-full sm:w-auto inline-flex h-12 items-center justify-center gap-3 rounded-full bg-white pl-6 pr-2 text-slate-900 shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
           >
             <span className="text-sm font-black uppercase tracking-wider">
-              Ver Proyectos
+              {hero.viewProjects}
             </span>
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-500 text-black group-hover:bg-green-600">
               <svg
@@ -75,11 +83,11 @@ export default function HeroSection() {
 
           {/* Botón Secundario (Ahora también rounded-full para hacer juego) */}
           <a
-            href="/Currículum_Vitae_Joshua_Jesus.pdf"
-            download="CV_Jesus_Garcia.pdf"
+            href={cvHref}
+            download={cvDownloadName}
             className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full border border-slate-800 bg-slate-900/50 px-8 font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-slate-800 hover:text-white hover:border-slate-700"
           >
-            Descargar CV
+            {hero.downloadCv}
           </a>
         </div>
       </div>

@@ -9,7 +9,7 @@ import gitImg from "../assets/git.png";
 import firebaseImg from "../assets/firebase.png";
 import figmaImg from "../assets/figma.png";
 
-export default function Skills() {
+export default function Skills({ t }) {
   const techIcons = [
     { name: "HTML", src: htmlImg },
     { name: "CSS", src: cssImg, customPadding: "p-2" },
@@ -23,27 +23,21 @@ export default function Skills() {
     { name: "Figma", src: figmaImg },
   ];
 
-  const skillsList = [
-    { category: "Front-End", tools: ["HTML", "CSS", "JavaScript", "React"] },
-    { category: "Backend", tools: ["Node.js", "Express"] },
-    { category: "Bases de datos", tools: ["MySQL", "MongoDB"] },
-    { category: "Herramientas", tools: ["Git", "Firebase", "Figma", "Vite"] },
-    { category: "Otros", tools: ["APIs RESTful", "Tailwind CSS", "Scrum"] },
-  ];
+  const skillsList = t.skills.categories;
 
   return (
     <section
-      id="habilidades"
+      id="skills"
       className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-950 relative overflow-hidden"
     >
       {/* TÍTULO DE SECCIÓN */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <p className="text-green-500 font-bold uppercase tracking-widest text-md mb-4">
-          • Ecosistema Técnico
+          • {t.skills.eyebrow}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium text-slate-300">
-          Tecnologías que{" "}
-          <span className="font-bold text-slate-500">Domino</span>
+          {t.skills.titleStart}{" "}
+          <span className="font-bold text-slate-500">{t.skills.titleStrong}</span>
         </h2>
       </div>
 

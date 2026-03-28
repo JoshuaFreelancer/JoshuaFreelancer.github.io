@@ -8,12 +8,10 @@ import {
   ShoppingBasket,
 } from "lucide-react";
 
-export default function Projects() {
-  const projects = [
+export default function Projects({ t }) {
+  const projectMeta = [
     {
       id: 1,
-      title: "Gamer Forever",
-      desc: "Construí este catálogo integrando la API de RAWG para demostrar mi dominio en el consumo de datos externos. Desarrollé un backend proxy propio en Node.js para resolver bloqueos CORS y garantizar una exploración sin interrupciones.",
       tags: ["React", "Node.js", "UI/UX", "API REST"],
       repoLink: "https://github.com/JoshuaFreelancer/Gamer-Forever",
       liveLink: "https://gamer-forever-web.web.app",
@@ -22,8 +20,6 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "Bienestar Express",
-      desc: "Desarrollé esta plataforma MERN para resolver la gestión ineficiente de inventarios. Implementé autenticación JWT, subida de imágenes a la nube y una base de datos segura para entregar un producto final rápido y confiable.",
       tags: ["React", "MongoDB", "Express", "JWT"],
       repoLink: "https://github.com/JoshuaFreelancer/SPA-BIENESTAR-EXPRESS",
       liveLink: "https://bienestar-express.web.app",
@@ -32,8 +28,6 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "Altura Andina",
-      desc: "Creé esta aplicación Full-Stack inspirada en los Andes para desafiar mis habilidades en entornos de producción. Integré pagos en línea, notificaciones y clima en tiempo real, demostrando mi capacidad para unir múltiples servicios complejos.",
       tags: ["Stack MERN", "API Integrations", "SPA", "Full-Stack"],
       repoLink: "https://github.com/JoshuaFreelancer/Altura-Andina",
       liveLink: "https://altura-andina.web.app",
@@ -42,8 +36,6 @@ export default function Projects() {
     },
     {
       id: 4,
-      title: "Frutería Deluxe",
-      desc: "Diseñé este sistema de inventario rompiendo el molde aburrido de los paneles tradicionales. Llevé la UX/UI al límite con diseño isométrico, glassmorphism y feedback auditivo, manteniendo siempre una arquitectura de código escalable.",
       tags: ["React", "Tailwind CSS", "UX/UI", "Glassmorphism"],
       repoLink: "https://github.com/JoshuaFreelancer/Fruteria-Deluxe",
       liveLink: "https://fruteria-deluxe.web.app",
@@ -52,19 +44,25 @@ export default function Projects() {
     },
   ];
 
+  const projects = projectMeta.map((item, index) => ({
+    ...item,
+    title: t.projects.items[index].title,
+    desc: t.projects.items[index].desc,
+  }));
+
   return (
     <section
-      id="proyectos"
+      id="projects"
       className="pb-16 pt-8 px-4 sm:px-6 lg:px-8 bg-slate-950 relative overflow-hidden"
     >
       {/* TÍTULO DE SECCIÓN */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <p className="text-green-500 font-bold uppercase tracking-widest text-md mb-4">
-          • Portafolio
+          • {t.projects.eyebrow}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium text-slate-300">
-          Mis mejores{" "}
-          <span className="font-bold text-slate-500">Proyectos</span>
+          {t.projects.titleStart}{" "}
+          <span className="font-bold text-slate-500">{t.projects.titleStrong}</span>
         </h2>
       </div>
 
@@ -105,7 +103,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-white text-slate-950 hover:bg-green-500 hover:text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg"
                   >
-                    <Globe size={16} /> Ver Live
+                    <Globe size={16} /> {t.projects.viewLive}
                   </a>
                   <a
                     href={project.repoLink}
@@ -113,7 +111,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-300"
                   >
-                    <Github size={16} /> Repositorio
+                    <Github size={16} /> {t.projects.repository}
                   </a>
                 </div>
               </div>

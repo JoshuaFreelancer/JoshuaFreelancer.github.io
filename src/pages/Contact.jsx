@@ -12,13 +12,20 @@ import {
 // Importamos la imagen directamente desde la carpeta assets (Ajusta la ruta según tu estructura de carpetas)
 import profileImg from "../assets/profile.png";
 
-export default function Contact() {
+export default function Contact({ t, language }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({
     type: "",
     message: "",
     visible: false,
   });
+  const isSpanish = language === "es";
+  const cvHref = isSpanish
+    ? "/CV%20Jesus%20Garcia.pdf"
+    : "/CV%20Jesus%20Garcia%20(English).pdf";
+  const cvDownloadName = isSpanish
+    ? "CV_Jesus_Garcia_ES.pdf"
+    : "CV_Jesus_Garcia_EN.pdf";
 
   // Auto-cerrar la alerta tras 6 segundos
   useEffect(() => {
@@ -50,7 +57,7 @@ export default function Contact() {
       if (data.success) {
         setStatus({
           type: "success",
-          message: "¡Mensaje enviado! Te contactaré muy pronto.",
+          message: t.contact.statusSuccess,
           visible: true,
         });
         event.target.reset();
@@ -61,7 +68,7 @@ export default function Contact() {
       console.error("Error en el formulario:", error);
       setStatus({
         type: "error",
-        message: "Hubo un error al enviar. Por favor, inténtalo de nuevo.",
+        message: t.contact.statusError,
         visible: true,
       });
     } finally {
@@ -71,7 +78,7 @@ export default function Contact() {
 
   return (
     <section
-      id="contacto"
+      id="contact"
       className="pb-24 px-6 bg-slate-950 relative overflow-hidden"
     >
       {/* --- TOAST NOTIFICATION (ALERTA) --- */}
@@ -106,12 +113,12 @@ export default function Contact() {
         <div className="space-y-10">
           <div className="space-y-4">
             <p className="text-green-500 font-bold uppercase tracking-widest text-md">
-              • ¿Tienes una idea?
+              • {t.contact.eyebrow}
             </p>
             <h2 className="text-4xl md:text-6xl text-white font-black tracking-tight leading-tight">
-              Hablemos de tu <br />
+              {t.contact.titleLine1} <br />
               {/* Se corrigió el color para igualar el Hero (text-green-500) */}
-              <span className="text-green-500">próximo proyecto</span>
+              <span className="text-green-500">{t.contact.titleHighlight}</span>
             </h2>
             <div className="h-1.5 w-24 bg-green-500 rounded-full"></div>
           </div>
@@ -137,7 +144,7 @@ export default function Contact() {
                   type="text"
                   name="name"
                   required
-                  placeholder="Tu Nombre"
+                  placeholder={t.contact.placeholders.name}
                   className="w-full bg-slate-900 hover:bg-slate-800 focus:bg-slate-900 border border-slate-700 text-white pl-12 pr-4 py-4 rounded-xl outline-none focus:border-green-500 transition-colors placeholder:text-slate-500"
                 />
               </div>
@@ -151,7 +158,7 @@ export default function Contact() {
                   type="email"
                   name="email"
                   required
-                  placeholder="Tu Correo Electrónico"
+                  placeholder={t.contact.placeholders.email}
                   className="w-full bg-slate-900 hover:bg-slate-800 focus:bg-slate-900 border border-slate-700 text-white pl-12 pr-4 py-4 rounded-xl outline-none focus:border-green-500 transition-colors placeholder:text-slate-500"
                 />
               </div>
@@ -166,7 +173,7 @@ export default function Contact() {
                 name="message"
                 required
                 rows="4"
-                placeholder="Cuéntame los detalles de tu proyecto..."
+                placeholder={t.contact.placeholders.message}
                 className="w-full bg-slate-900 hover:bg-slate-800 focus:bg-slate-900 border border-slate-700 text-white pl-12 pr-4 py-4 rounded-xl resize-none outline-none focus:border-green-500 transition-colors placeholder:text-slate-500"
               ></textarea>
             </div>
@@ -180,7 +187,7 @@ export default function Contact() {
                   : "bg-green-500 text-slate-950 hover:bg-white hover:scale-[1.01]"
               }`}
             >
-              {isSubmitting ? "Enviando mensaje..." : "Enviar Mensaje"}
+              {isSubmitting ? t.contact.sendingMessage : t.contact.sendMessage}
               {!isSubmitting && <Send className="w-5 h-5" />}
             </button>
           </form>
@@ -192,7 +199,7 @@ export default function Contact() {
             {/* Se removió el onError y se usa la imagen importada de assets */}
             <img
               src={profileImg}
-              alt="Fotografía profesional de Jesús García"
+              alt={t.contact.profileAlt}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
@@ -201,8 +208,8 @@ export default function Contact() {
 
             {/* Botón Flotante CV */}
             <a
-              href="/Currículum Vitae Joshua (Jesus).pdf"
-              download="CV_Jesus_Garcia.pdf"
+              href={cvHref}
+              download={cvDownloadName}
               className="absolute bottom-8 right-8 z-20 flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-2xl shadow-xl hover:bg-green-500 hover:border-green-400 hover:text-slate-950 transition-all duration-300 group/btn hover:-translate-y-2"
             >
               <div className="bg-white/20 p-2 rounded-full group-hover/btn:bg-slate-950/10 transition-colors">
@@ -210,9 +217,9 @@ export default function Contact() {
               </div>
               <div className="text-left">
                 <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">
-                  Descargar
+                  {t.contact.download}
                 </p>
-                <p className="text-lg font-black leading-none">Mi Currículum</p>
+                <p className="text-lg font-black leading-none">{t.contact.myResume}</p>
               </div>
             </a>
           </div>

@@ -1,35 +1,28 @@
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({ t, language, onToggleLanguage }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Función para normalizar el ID (quitar acentos, espacios por guiones)
-  const getTargetId = (item) => {
-    return item
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
-  };
+  const isSpanish = language === "es";
 
   return (
     <nav className="fixed w-full z-50 top-0 start-0 bg-slate-950/80 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
-      {/* Márgenes laterales progresivos y balance vertical */}
+      {/* Aquí aumenté el padding a py-5 para devolverle la altura original */}
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-5 px-4 sm:px-6 lg:px-8">
-        {/* LOGO */}
-        <a href="#" className="flex items-center group">
-          <span className="self-center text-2xl font-bold italic text-white tracking-tighter transition-transform group-hover:scale-105">
+        {/* LADO IZQUIERDO: SOLO EL LOGO */}
+        <a href="#home" className="flex items-center group">
+          <span className="text-2xl font-bold italic text-white tracking-tighter transition-transform group-hover:scale-105">
             JG<span className="text-green-500">.</span>
           </span>
         </a>
 
-        {/* Botón Hamburguesa */}
+        {/* BOTÓN HAMBURGUESA (Para móviles) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
+          aria-label={isOpen ? t.nav.closeMenu : t.nav.openMenu}
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-slate-400 rounded-lg md:hidden hover:bg-white/10 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-green-500/50"
         >
-          <span className="sr-only">Abrir menú</span>
+          <span className="sr-only">{isOpen ? t.nav.closeMenu : t.nav.openMenu}</span>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -54,38 +47,38 @@ export default function Header() {
           </svg>
         </button>
 
-        {/* Contenedor de Enlaces */}
+        {/* LADO DERECHO: ENLACES + CTA + REDES + SWITCH IDIOMA */}
         <div
           className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto transition-all duration-300`}
         >
-          <ul className="flex flex-col p-5 md:p-0 mt-4 border border-white/10 rounded-2xl bg-slate-900/95 md:flex-row md:items-center md:gap-8 md:mt-0 md:border-0 md:bg-transparent md:backdrop-blur-none shadow-2xl md:shadow-none">
-            {/* ENLACES */}
-            {["Inicio", "Servicios", "Habilidades", "Proyectos"].map((item) => (
-              <li key={item}>
+          <ul className="flex flex-col p-5 md:p-0 mt-4 border border-white/10 rounded-2xl bg-slate-900/95 md:flex-row md:items-center md:gap-6 md:mt-0 md:border-0 md:bg-transparent md:backdrop-blur-none shadow-2xl md:shadow-none">
+            {/* MAPEO DE ENLACES */}
+            {t.nav.links.map((item) => (
+              <li key={item.href}>
                 <a
-                  href={`#${getTargetId(item)}`}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className="relative block py-2 md:py-0 text-slate-300 uppercase text-[12px] font-bold tracking-[0.15em] hover:text-white transition-colors group"
                 >
-                  {item}
+                  {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </li>
             ))}
 
-            {/* Contenedor unificado para CTA y Redes Sociales */}
+            {/* SEPARADOR VISUAL, CTA, REDES Y SWITCH */}
             <li className="flex flex-col md:flex-row items-center gap-5 mt-4 md:mt-0 md:pl-6 md:border-l md:border-white/10 pt-4 md:pt-0 border-t border-white/10 md:border-t-0">
               {/* BOTÓN CONTÁCTAME */}
               <a
-                href="#contacto"
+                href="#contact"
                 onClick={() => setIsOpen(false)}
                 className="w-full md:w-auto text-white bg-green-600 hover:bg-green-500 font-bold rounded-full text-[12px] uppercase px-6 py-2.5 text-center transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(22,163,74,0.3)] hover:shadow-[0_0_25px_rgba(22,163,74,0.6)]"
               >
-                Contáctame
+                {t.nav.contactCta || "CONTÁCTAME"}
               </a>
 
-              {/* ICONOS SOCIALES */}
-              <div className="flex items-center gap-3">
+              {/* CONTENEDOR REDES Y SWITCH */}
+              <div className="flex items-center gap-3 mt-4 md:mt-0">
                 {/* GitHub */}
                 <a
                   href="https://github.com/JoshuaFreelancer"
@@ -135,6 +128,42 @@ export default function Header() {
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
                   </svg>
                 </a>
+
+                {/* Pequeño separador visual para desktop */}
+                <div className="hidden md:block w-px h-8 bg-white/20 ml-2"></div>
+
+                {/* Switch de Idioma Minimalista (A la derecha) */}
+                <label
+                  htmlFor="lang-switch"
+                  className="relative inline-flex items-center cursor-pointer select-none ml-2"
+                  aria-label={t.nav.langToggleLabel}
+                >
+                  <input
+                    id="lang-switch"
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={isSpanish}
+                    onChange={(event) => {
+                      onToggleLanguage(event.target.checked ? "es" : "en");
+                    }}
+                  />
+                  <span className="w-14 h-7 rounded-full border border-white/20 bg-slate-900/90 peer-checked:bg-slate-800 transition-colors"></span>
+                  <span className="absolute left-1 top-1 h-5 w-6 rounded-full bg-green-500 transition-transform duration-300 peer-checked:translate-x-6"></span>
+                  <span
+                    className={`absolute left-2 text-[9px] font-bold tracking-wider pointer-events-none transition-colors ${
+                      isSpanish ? "text-slate-300" : "text-slate-950"
+                    }`}
+                  >
+                    EN
+                  </span>
+                  <span
+                    className={`absolute right-2 text-[9px] font-bold tracking-wider pointer-events-none transition-colors ${
+                      isSpanish ? "text-slate-950" : "text-slate-300"
+                    }`}
+                  >
+                    ES
+                  </span>
+                </label>
               </div>
             </li>
           </ul>
