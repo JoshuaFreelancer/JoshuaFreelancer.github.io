@@ -7,6 +7,7 @@ import {
   Building,
   ShoppingBasket,
   Store,
+  StickyNote,
 } from "lucide-react";
 
 export default function Projects({ t }) {
@@ -50,6 +51,14 @@ export default function Projects({ t }) {
       liveLink: "https://inproandes-ecommerce.web.app",
       imageColor: "bg-blue-900/30",
       icon: Store,
+    },
+    {
+      id: 6,
+      tags: ["React", "Node.js", "MySQL", "Sequelize"],
+      repoLink: "https://github.com/JoshuaFreelancer/cozynotes-api",
+      liveLink: "https://cozy-notes.web.app",
+      imageColor: "bg-rose-900/30",
+      icon: StickyNote,
     },
   ];
 

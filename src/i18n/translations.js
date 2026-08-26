@@ -98,6 +98,11 @@ export const es = {
         title: "INPROANDES E-Commerce",
         desc: "Desarrollé una plataforma de comercio electrónico B2B de alto rendimiento con carrito de compras completo. Arquitecturada con TypeScript, Node.js y MySQL en la nube, integrando caché con Redis y colas de tareas para asegurar una escalabilidad impecable en producción.",
       },
+      // NUEVO PROYECTO AÑADIDO: COZY NOTES
+      {
+        title: "Cozy Notes",
+        desc: "Desarrollé una aplicación Full-Stack para la gestión de notas y etiquetas. Implementé una base de datos relacional en MySQL con Sequelize, un sistema de autenticación seguro y despliegue distribuido en la nube (Render y Firebase), demostrando mi capacidad para construir arquitecturas sólidas de extremo a extremo.",
+      },
     ],
   },
   contact: {
@@ -231,6 +236,11 @@ export const en = {
         title: "INPROANDES E-Commerce",
         desc: "Developed a high-performance B2B wholesale e-commerce platform featuring a complete shopping cart. Architected with TypeScript, Node.js, and cloud-hosted MySQL, integrating Redis caching and task queues to ensure flawless scalability in production.",
       },
+      // NUEVO PROYECTO AÑADIDO: COZY NOTES
+      {
+        title: "Cozy Notes",
+        desc: "Engineered a full-stack application for note and tag management. Implemented a relational MySQL database utilizing Sequelize, a secure JWT authentication system, and a distributed cloud deployment (Render and Firebase), showcasing end-to-end architecture capabilities.",
+      }
     ],
   },
   contact: {
