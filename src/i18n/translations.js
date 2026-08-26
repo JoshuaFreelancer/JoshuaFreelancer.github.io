@@ -94,6 +94,10 @@ export const es = {
         title: "Frutería Deluxe",
         desc: "Diseñé este sistema de inventario rompiendo el molde aburrido de los paneles tradicionales. Llevé la UX/UI al límite con diseño isométrico, glassmorphism y feedback auditivo, manteniendo siempre una arquitectura de código escalable.",
       },
+      {
+        title: "INPROANDES E-Commerce",
+        desc: "Desarrollé una plataforma de comercio electrónico B2B de alto rendimiento con carrito de compras completo. Arquitecturada con TypeScript, Node.js y MySQL en la nube, integrando caché con Redis y colas de tareas para asegurar una escalabilidad impecable en producción.",
+      },
     ],
   },
   contact: {
@@ -222,6 +226,10 @@ export const en = {
       {
         title: "Fruteria Deluxe",
         desc: "Designed an inventory platform that breaks conventional dashboard patterns. Pushed UX/UI boundaries with isometric design, glassmorphism, and audio feedback, while maintaining a strictly scalable code architecture.",
+      },
+      {
+        title: "INPROANDES E-Commerce",
+        desc: "Developed a high-performance B2B wholesale e-commerce platform featuring a complete shopping cart. Architected with TypeScript, Node.js, and cloud-hosted MySQL, integrating Redis caching and task queues to ensure flawless scalability in production.",
       },
     ],
   },

@@ -6,6 +6,7 @@ import {
   HeartPulse,
   Building,
   ShoppingBasket,
+  Store,
 } from "lucide-react";
 
 export default function Projects({ t }) {
@@ -41,6 +42,14 @@ export default function Projects({ t }) {
       liveLink: "https://fruteria-deluxe.web.app",
       imageColor: "bg-orange-900/30",
       icon: ShoppingBasket,
+    },
+    {
+      id: 5,
+      tags: ["React", "TypeScript", "Node.js", "MySQL"],
+      repoLink: "https://github.com/JoshuaFreelancer/INPROANDES_E-COMMERCE",
+      liveLink: "https://inproandes-ecommerce.web.app",
+      imageColor: "bg-blue-900/30",
+      icon: Store,
     },
   ];
 
